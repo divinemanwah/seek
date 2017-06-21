@@ -11,8 +11,16 @@
 				</div>
 
                 <div class="panel-body">
-                    @empty($items)
+                    @empty ($items)
 						Your cart is empty!
+					@else
+						<ul>
+							@foreach ($items as $i => $item)
+							
+								<li>{{ $item[0]->name }}</li>
+							
+							@endforeach
+						</ul>
 					@endempty
                 </div>
             </div>

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\AdType;
 
 class CartController extends Controller
 {
@@ -21,8 +22,28 @@ class CartController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
-    {
-        return view('cart', ['items' => session('items', [])]);
+    public function index() {
+		
+		$items = session('items', []);
+		
+        return view('cart', ['items' => $items]);
     }
+	
+	public function add(Request $request) {
+		
+		$items = session('items', []);
+		
+		$items[] = [AdType::find($request->input('id')), intval($request->input('qty'), 10)];
+		
+		session(['items' => $items]);
+		
+		return redirect('cart');
+	}
+	
+	public function clear(Request $request) {
+		
+		$request->session()->forget('items');
+		
+		return redirect('cart');
+	}
 }

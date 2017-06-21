@@ -15,4 +15,6 @@ Route::get('/', 'CatalogController@index');
 
 Auth::routes();
 
-Route::get('/cart', 'CartController@index')->name('cart');
+Route::get('/cart', 'CartController@index');
+Route::post('/cart', 'CartController@add');
+Route::get('/cart/clear', 'CartController@clear');

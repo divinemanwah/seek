@@ -18,7 +18,7 @@ class CreateRulesTable extends Migration
 			$table->integer('type_id')->unsigned()->nullable(); // capability or checkout
             $table->timestamps();
 			
-			$table->foreign('type_id')->references('id')->on('rule_types');
+			// $table->foreign('type_id')->references('id')->on('rule_types');
         });
     }
 

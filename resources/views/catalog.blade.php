@@ -72,30 +72,60 @@
         <div class="flex-center position-ref full-height">
             @if (Route::has('login'))
                 <div class="top-right links">
-                    @if (Auth::check())
-                        <a href="{{ url('/cart') }}">Cart</a>
-                    @else
-                        <a href="{{ url('/login') }}">Login</a>
+                    @if (Auth::guest())
+						<a href="{{ url('/login') }}">Login</a>
                         <a href="{{ url('/register') }}">Register</a>
+                    @else
+                        <a href="{{ url('/cart') }}">Cart</a>
                     @endif
                 </div>
             @endif
 
             <div class="content">
-				<table class="types">
-					<tr>
-						@foreach ($types as $type)
-							<td>
-								<h3>{{ $type->name }}</h3>
-								<em title="{{ $type->description }}">{{ str_limit($type->description, 35) }}</em>
-								<p>
-									<button>${{ $type->price }}</button>
-								</p>
-							</td>
-						@endforeach
-					</tr>
-				</table>
+				<form method="POST" action="/cart" autocomplete="off">
+					<table class="types">
+						<tr>
+							@foreach ($types as $type)
+								<td>
+									<h3>{{ $type->name }}</h3>
+									<em title="{{ $type->description }}">{{ str_limit($type->description, 35) }}</em>
+									<p>
+										<button type="submit" name="id" value="{{ $type->id }}">${{ $type->price }}</button> <input type="text" size="3" placeholder="Qty." name="qty" value="1" />
+									</p>
+								</td>
+							@endforeach
+						</tr>
+					</table>
+					{{ csrf_field() }}
+				</form>
             </div>
         </div>
+		<script type="text/javascript" src="//code.jquery.com/jquery-latest.min.js"></script>
+		<script type="text/javascript">
+			$(function () {
+				
+				$('form').submit(function (e) {
+					
+					if(!$(this).data('go'))
+						e.preventDefault();
+					
+				});
+				
+				$('button').click(function (e) {
+					
+					$(this)
+						.parents('td')
+						.siblings()
+							.find('button, input')
+								.attr('disabled', 'disabled');
+					
+					$('form')
+						.data('go', true)
+						.submit();
+					
+				});
+				
+			});
+		</script>
     </body>
 </html>
