@@ -26,14 +26,31 @@ class CartController extends Controller
 		
 		$items = session('items', []);
 		
+		
+		
         return view('cart', ['items' => $items]);
     }
 	
 	public function add(Request $request) {
 		
 		$items = session('items', []);
+		$req = $request->all();
 		
-		$items[] = [AdType::find($request->input('id')), intval($request->input('qty'), 10)];
+		$id = 'id-' . $req['id'];
+		
+		if(isset($items[$id])) {
+			
+			$items[$id][1] += intval($req['qty'], 10);
+			
+			$items[$id][2] = $items[$id][0]->price * $items[$id][1];
+		}
+		else {
+			
+			$type = AdType::find($req['id']);
+			$qty = intval($req['qty'], 10);
+			
+			$items[$id] = [$type, $qty, $type->price * $qty];
+		}
 		
 		session(['items' => $items]);
 		
