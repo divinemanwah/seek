@@ -24,20 +24,15 @@ Please copy .env.example to .env and supply appropriate database settings (host,
 This is a separate step because every installation has different .env files.
 
 Then run the following in order:
-
-	php artisan key:generate
-		
-		- This generates the application key for the .env file (**do this only once per install!)
-	
 	
 	composer install
 		
 		- This will download and install all the PHP dependencies (**do this only once per install!)
 	
 	
-	npm install
-	
-		- This will download and install all the JavaScript dependencies (**do this only once per install!)
+	php artisan key:generate
+		
+		- This generates the application key for the .env file (**do this only once per install!)
 	
 	
 	php artisan migrate
