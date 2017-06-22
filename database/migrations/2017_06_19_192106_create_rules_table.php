@@ -15,10 +15,15 @@ class CreateRulesTable extends Migration
     {
         Schema::create('rules', function (Blueprint $table) {
             $table->increments('id');
-			$table->integer('type_id')->unsigned()->nullable(); // capability or checkout
+			$table->integer('group_id')->unsigned()->nullable();
+			$table->integer('type_id')->unsigned()->nullable();
+			$table->longText('description');
+			$table->longText('meta');
+			$table->boolean('active')->default(1);
             $table->timestamps();
 			
-			// $table->foreign('type_id')->references('id')->on('rule_types');
+			$table->foreign('group_id')->references('id')->on('groups');
+			$table->foreign('type_id')->references('id')->on('ad_types');
         });
     }
 

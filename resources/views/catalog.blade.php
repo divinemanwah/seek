@@ -76,7 +76,7 @@
 						<a href="{{ url('/login') }}">Login</a>
                         <a href="{{ url('/register') }}">Register</a>
                     @else
-                        <a href="{{ url('/cart') }}">Cart</a>
+                        <a href="{{ url('/cart') }}">Cart &rarr;</a>
                     @endif
                 </div>
             @endif

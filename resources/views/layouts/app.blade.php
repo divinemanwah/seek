@@ -76,5 +76,12 @@
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}"></script>
+	<script type="text/javascript">
+		jQuery(function ($) {
+			
+			$('[data-toggle="tooltip"]').tooltip();
+			
+		});
+	</script>
 </body>
 </html>

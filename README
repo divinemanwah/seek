@@ -1,0 +1,89 @@
+
+Seek App
+
+Author: Ron Oliver Santor <ronoliversantor@yahoo.com> (Skype: rontis_raven)
+
+Notes:
+
+	- I was going to make it a deployable Vagrant distribution but I ran out of time.
+	- I also didn't have enough time to write test scripts.
+	- A nice feature too would be a Rules manager. But in the meantime, the algorithm can be seen at database/seeds/RulesTableSeeder.php.
+
+------------------
+
+Prerequisites:
+
+	PHP >= 5.6.4 (http://php.net)
+	Composer (https://getcomposer.org/)
+	MySQL (https://www.mysql.com/)
+	Node.js (https://nodejs.org/)
+
+------------------
+
+Please copy .env.example to .env and supply appropriate database settings (host, port, existing database name, and credentials). Set SESSION_DRIVER to "database" (without quotes).
+This is a separate step because every installation has different .env files.
+
+Then run the following in order:
+
+	php artisan key:generate
+		
+		- This generates the application key for the .env file (**do this only once per install!)
+	
+	
+	composer install
+		
+		- This will download and install all the PHP dependencies (**do this only once per install!)
+	
+	
+	npm install
+	
+		- This will download and install all the JavaScript dependencies (**do this only once per install!)
+	
+	
+	php artisan migrate
+	
+		- This creates all the required tables (**do this only once per install!)
+	
+	
+	php artisan db:seed
+		
+		- This populates the created tables (**do this only once per install!)
+	
+	
+	php artisan serve
+	
+		- This will launch the app
+		
+
+The will run in port 8000 by default, but you can change that by running "php artisan serve --port=xxxx" instead.
+
+If something went wrong or if you have any clarifications to my solution, please contact me through my email or Skype id written above.
+
+------------------
+
+Default users:
+
+	Unilever
+	
+		username: user@unilever.com
+		password: secret
+	
+	Apple
+	
+		username: user@apple.com
+		password: secret
+	
+	Nike
+	
+		username: user@nike.com
+		password: secret
+	
+	Ford
+	
+		username: user@ford.com
+		password: secret
+
+------------------
+
+
+Thank you!
