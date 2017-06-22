@@ -6,7 +6,7 @@ Author: Ron Oliver Santor <ronoliversantor@yahoo.com> (Skype: rontis_raven)
 Notes:
 
 	- I was going to make it a deployable Vagrant distribution but I ran out of time.
-	- I also didn't have enough time to write test scripts.
+	- I also didn't have enough time to write unit tests, and I apologize for that.
 	- A nice feature too would be a Rules manager. But in the meantime, the algorithm can be seen at database/seeds/RulesTableSeeder.php.
 
 ------------------
